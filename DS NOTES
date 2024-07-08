@@ -240,3 +240,64 @@ print(data['Data Science'].describe())
 print("Skewness= %.2f"%data['Data Science'].skew())
 sns.distplot(data['Data Science'], fit=norm, color="r")
 plt.show()
+
+
+
+pgm 12
+
+import matplotlib.pyplot as plt
+import numpy as np
+Stud1=[85,87,80,84,96]
+Stud2=[65,64,55,54,60]
+# create plot
+bar_width = 0.35
+X = np.arange(5)
+p1 = plt.bar(X, Stud1, bar_width, color='b',label='Student1')
+# The bar of second plot starts where the first bar ends
+p2 = plt.bar(X + bar_width, Stud2, bar_width,color='g',label='Student2')
+plt.xlabel('Subject')
+plt.ylabel('Scores')
+plt.title('Student1 and Student2 Comparision ')
+plt.xticks(X + (bar_width/2) , ("CC","DS","CN","ENG","FE"))
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+pgm 13
+
+import matplotlib.pyplot as plt
+import numpy as np
+Stud1=[85,87,80,84,96]
+Stud2=[65,64,55,54,60]
+# create plot
+bar_width = 0.35
+X = np.arange(5)
+p1 = plt.bar(X, Stud1, bar_width, color='b',label='Student1')
+# The bar of second plot starts where the first bar ends
+p2 = plt.bar(X + bar_width, Stud2, bar_width,color='g',label='Student2')
+plt.xlabel('Subject')
+plt.ylabel('Scores')
+plt.title('Student1 and Student2 Comparision ')
+plt.xticks(X + (bar_width/2) , ("CC","DS","CN","ENG","FE"))
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+pgm 14
+
+import matplotlib.pyplot as plt
+rollno= ["Amita","Roopa","Sonali","Santosh","Manali","Mohan","Pramveer","Hema","Gita","Sohan"]
+marks= [30,28,22,18,15,5,0,19,22,23]
+perls=[]
+for i in marks:
+    per="%.2f"%(i/30*100)
+    perls.append(float(per))
+plt.figure(figsize=(10, 5))
+plt.scatter(x=rollno, y=marks, c=perls, cmap="cool")
+plt.colorbar(label="Percentage", orientation="horizontal")
+plt.title("Student Performance in DS Subject")
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.show()
+
