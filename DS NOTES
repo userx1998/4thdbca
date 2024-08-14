@@ -474,197 +474,121 @@ plt.show()
 pgm 21
 
 import pandas as pd
-df=pd.DataFrame({"Team":["MI","CSK","Devils","MI","CSK","RCB","CSK",
-                         "CSK","KKR","KKR","KKR"],
-                 "Rank":[1,2,2,3,3,4,1,1,2,4,1],
-                 "Year":[2014,2015,2014,2015,2014,2015,2016,2017,
-                         2016,2014,2015],
-                 "Points":[876,789,863,673,741,812,756,788,694,
-                           701,804]},
-                index=["R1","R2","R3","R4","R5","R6","R7","R8",
-                       "R9","R10","R11"])
-print("DataFrame = ")
-print(df)
-#Access Rows 2,4,6,8 using index and using labels
-print("After Accessing Rows 2,4,6,8 Using Labels = ")
-print(df.loc[["R2","R4","R6","R8"]])
-print("After Accessing Rows 2,4,6,8 Using Index = ")
-print(df.iloc[1:8:2])
-#Access top 3 Rows and also bottom 3 rowa
-print("Top 3 Rows = ")
-print(df.head(3))
-print("Bottom 3 Rows= ")
-print(df.tail(3))
-#Access columns team and points
-print("After Accessing 2 Columns  Team and Points= ")
-print(df[['Team','Points']])
-#Access Row 3 and column 1,3,4 using index
-print("After Accessing row 3 and Columns  1,3,4 using index= ")
-print(df.iloc[2,[0,2,3]])
-#Access Row 3 and column 1,3,4 using labels
-print("After Accessing row 3 and Columns  1,3,4 using labels= ")
-print(df.loc["R3",['Team','Year','Points']])
-#Update last record with values 'RCB',3,2016,800
+df=pd.DataFrame({"Team":["MI","CSK","Devils","MI","CSK","RCB",
+"CSK","CSK","KKR","KKR","KKR"],
+ "Rank":[1,2,2,3,3,4,1,1,2,4,1],
+ "Year":[2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015],
+"Points":[876,789,863,673,741,812,756,788,694,701,804]},
+index=["R1","R2","R3","R4","R5","R6","R7","R8","R9","R10","R11
+"])
+print("DataFrame=\n",df)
+print("After Accessing Rows 2,4,6,8 Using
+Labels=\n",df.loc[["R2","R4","R6","R8"]])
+print("After Accessing Rows 2,4,6,8 Using Index=\n",df.iloc[1:8:2])
+print("Top 3 Rows=\n",df.head(3))
+print("Bottom 3 Rows=\n",df.tail(3))
+print("After Accessing 2 Columns Team and
+Points=\n",df[['Team','Points']])
+print("After Accessing row 3 and columns 1,2,4 using
+index=\n",df.iloc[2,[0,2,3]])
+print("After Accessing row 3 and columns 1,3,4 using
+labels=\n",df.loc["R3",['Team','Year','Points']])
 df.iloc[10]=['RCB',3,2016,800]
-print("After Updating Last Row = ")
-print(df)
-#Insert new record in dataframe
-df.loc[len(df.index)] = ['MI',2,2017,800]
-print("After Inserting Last Row= ")
-print(df)
-#Delete row from dataframe
+print("After Updating Last Row=\n",df)
+df.loc[len(df.index)]=['MI',2,2017,800]
+print("After Inserting Last Row=\n",df)
 df=df.drop([11])
-print("After Deleting Last Row = ")
-print(df)
-
+print("After Deleting Last Row=\n",df)
 
 pgm 22
 
+Program – 22:
 import pandas as pd
-ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
-   'Kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
-   'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
-   'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
-   'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
-df = pd.DataFrame(ipl_data)
-print("DataFrame = ")
-print(df)
-#Find Teams in year 2014
-print("Teams in year 2014 = ")
-print(df[df['Year'] == 2014])
-#Find Teams in whose Rank is 1
-print("Teams in whose Rank is 1 = ")
-print(df[df['Rank'] ==1])
-#Find Team with rank 2 and 3
-print("Teams in whose Rank is 2 or 3 = ")
-print(df[df["Rank"].isin([2, 3])])
-#Find Teams 2014 or 2015
-print("Teams in year 2014 and 2015 = ")
-print(df[ ( df["Year"] == 2014) | ( df["Year"] == 2015 )])
-#Grouping on year and calculate mean of points
-grouped = df.groupby('Year')
-print(grouped['Points'].mean())
-#Grouping on Team and calculate mean of points
-grouped = df.groupby('Team')
-print(grouped['Points'].mean())
-#Maximum points in each year
-grouped = df.groupby('Year')
-print(grouped['Points'].max())
+ipl_data={'Team':['Riders','Riders','Devils','Devils','Kings',
+ 'Kings','Kings','Kings','Riders','Royals','Royals','Riders'],
+ 'Rank':[1,2,2,3,3,4,1,1,2,4,1,2],
 
+'Year':[2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+ 'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df=pd.DataFrame(ipl_data)
+print("DataFrame=\n",df)
+print("Teams in year2014=\n",df[df['Year']==2014])
+print("Teams in whose Rank is 1=\n",df[df['Rank']==1])
+print("Teams in whose Rank is 2 0r 3=\n",df[df["Rank"].isin([2,3])])
+print("Teams in year 2014 and
+2015=\n",df[(df["Year"]==2014)|(df["Year"]==2015)])
+grouped=df.groupby('Year')
+print(grouped['Points'].mean())
+grouped=df.groupby('Team')
+print(grouped['Points'].mean())
+grouped=df.groupby('Year')
+print(grouped['Points'].max())
 
 pgm 23
 
+Program – 23:
 import pandas as pd
-data = {'name': ['Somu', 'Kiku', 'Amol', 'Lini'],
-    'physics': [68, 74, 77, 78],
-    'chemistry': [84, 56, 73, 69],
-    'algebra': [78, 88, 82, 87]}
-#create dataframe
-df_marks = pd.DataFrame(data)
-print('Original DataFrame\n------------------')
-print(df_marks)
-#ADD row to the dataframe
-df_marks.loc[len(df_marks)]=['Geo', 87, 92,97]
-print("After adding new row = ")
-print(df_marks)
-#Adding new column
+data={'name':['somu','Kiku','Amol','Linu'],
+ 'physics':[68,74,77,78],
+ 'chemistry':[84,56,73,69],
+ 'algebra':[78,88,82,87]}
+df_marks=pd.DataFrame(data)
+print('Original DataFrame--------\n',df_marks)
+df_marks.loc[len(df_marks)]=['Geo',87,92,97]
+print("After adding new row=\n",df_marks)
 df_marks.insert(2,"Maths",[45,66,78,90,91])
-print("After adding new column = ")
-print(df_marks)
-#Sorting by name in ascending order
+print("After adding new column=\n",df_marks)
 df_marks=df_marks.sort_values(by=['name'])
-print("Sorting Name by Ascending order = ",)
-print(df_marks)
-#Sorting by name in decending order
-df_marks=df_marks.sort_values(by=['name'], ascending=False)
-print("Sorting Name by Descending order = ",)
-print(df_marks)
-#Filter on column name and physics
+print("Sorting name by Ascending oder=\n",df_marks)
+df_marks=df_marks.sort_values(by=['name'],ascending=False)
+print("Sorting name by Descending oder=\n",df_marks)
 df_Phy=df_marks.filter(items=['name','physics'])
-print("After Filter on column name and physics" )
-print(df_Phy)
-#Filter Column start with chem
+print("After filter on column name and physics=\n",df_Phy)
 df_chem=df_marks.filter(regex='^chem',axis=1)
-print("After Filter on chem" )
-print(df_chem)
-
+print("After filter on chem=\n",df_chem)
 
 pgm 24
 
-
+Program – 24:
 import pandas as pd
-import numpy as np
-s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveSmith'])
-print("Series=")
+data=[' RLSBCA','naveen','rohit',' sinu','anu@123']
+s=pd.Series(data)
 print(s)
-print("Series in lowercase=")
-print(s.str.lower())
-print("Series in uppercase=")
 print(s.str.upper())
-s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
-print("new series =")
-print (s)
-print ("After Stripping:")
-print (s.str.strip())
+print(s.str.lower())
+print(s.str.islower())
+print(s.str.isupper())
+print(s.str.len())
+print(s.str.startswith('r'))
+print(s.str.split('e'))
+print(s.str.find('e'))
+print(s.str.strip())
+print(s.str.replace('e','#'))
+print(s.str.contains('e'))
 print(s.str.cat(sep='_'))
-time_sentences = ["Monday: The doctor's appointment is at 2:45 pm.",
-                  "Tuesday: The dentist's appointment is at 11:30 am.",
-                  "Wednesday: At 7:00 pm, there is a basketball game!",
-                  "Thursday: Be back home by 11:15 pm at the latest.",
-                  "Friday: Take the train at 08:10 am, arrive at 09:00am."]
-
-df = pd.DataFrame(time_sentences, columns=['text'])
-print(df)
-# find which entries contain the word 'appointment'
-print("find which entries contain the word 'appointment")
-print(df[df['text'].str.contains('appointment')])
-# extract the entire time, the hours, the minutes, and the period
-print("extract the entire time, the hours, the minutes, and the period")
-print(df['text'].str.extractall(r'(?P<time>\d:\d{1,2})'))
 
 
-pgm 25 
+pgm 25
 
+Program – 25:
 import pandas as pd
-table1 = pd.DataFrame({"P_ID" : (1,2,3,4,5,6,7,8),
-                     "gender" : ("male", "male", "female","female",
-                                "female", "male", "female", "male"),
-                     "height" : (71,73,64,64,66,69,62,72),
-                     "weight" : (175,225,130,125,165,160,115,250)})
-
-print(table1)
-table2 = pd.DataFrame({"P_ID" : (1, 2, 4, 5, 7, 8, 9, 10),
-                     "sex" : ("male", "male", "female","female",
-                            "female", "male", "male", "female"),
-                     "visits" : (1,2,4,12,2,2,1,1),
-                     "checkup" : (1,1,1,1,1,1,0,0),
-                     "follow_up" : (0,0,1,2,0,0,0,0)
-                       })
-print(table2)
-combined1 = pd.merge(table1,       # First table
-                    table2,        # Second table
-                    how="inner",   # Merge method
-                    on="P_ID")     # Column(s) to join on
-
-print(combined1)
-left_join = pd.merge(table1,       # First table
-                    table2,        # Second table
-                    how="left",   # Merge method
-                    on="P_ID")     # Column(s) to join on
-
-print(left_join)
-right_join = pd.merge(table1,       # First table
-                    table2,        # Second table
-                    how="right",   # Merge method
-                    on="P_ID")     # Column(s) to join on
-
-print(right_join)
-# An outer join keeps all key values in both data frames
-
-outer_join = pd.merge(table1,      # First table
-                    table2,        # Second table
-                    how="outer",   # Merge method
-                    on="P_ID")     # Column(s) to join on
-
-print(outer_join)
-
+tab1={'ID':[1,2,3,4],
+ 'Name':['Anu','Ankita','Darshan','Divesh']}
+print(tab1)
+df1=pd.DataFrame(tab1)
+print(df1)
+tab2={'ID':[1,2,3,5],
+ 'Name':['cindrella','Dhanaraj','naveen','akshata']}
+print(tab2)
+df2=pd.DataFrame(tab2)
+print(df2)
+df3=pd.merge(df1,df2)
+print(df3)
+df4=pd.merge(df1,df2,how='inner',on='ID')
+print(df4)
+df5=pd.merge(df1,df2,how='right',on='ID')
+print(df5)
+df6=pd.merge(df1,df2,how='left',on='ID')
+print(df6)
+df7=pd.merge(df1,df2,how='outer',on='ID')
+print(df7)
